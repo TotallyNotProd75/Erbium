@@ -33,17 +33,17 @@ namespace Characters.Movement
         {
             Vector3 clampedDirection = Vector3.ClampMagnitude(direction,1f); // normalizing direction so we wouldn't go super fast in diagonal
             Vector3 velocity =
-                CommonMethods.CreateVectorWithoutLoosingYWithMultiplier(clampedDirection, rbd.velocity.y,
+                CommonMethods.CreateVectorWithoutLoosingYWithMultiplier(clampedDirection, rbd.linearVelocity.y,
                     stats.speed);
-            if (rbd.velocity.magnitude < velocity.magnitude)
+            if (rbd.linearVelocity.magnitude < velocity.magnitude)
             {
-                var acceleration = CommonMethods.CreateVectorWithoutLoosingYWithMultiplier(clampedDirection, rbd.velocity.y,
+                var acceleration = CommonMethods.CreateVectorWithoutLoosingYWithMultiplier(clampedDirection, rbd.linearVelocity.y,
                     stats.acceleration);
                 rbd.AddForce(acceleration);
             }
             else
             {
-                rbd.velocity = velocity;
+                rbd.linearVelocity = velocity;
             }
 
             return velocity;

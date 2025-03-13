@@ -42,7 +42,7 @@ namespace Tests {
             yield return new WaitForSeconds(0.1f);
             IMovement movement = player.getMovement();
             Assert.True(CommonMethods.IsAboutToLand(playerGo.transform.position, Vector3.down,
-                CommonMethods.NormalizeValue(player.getRigidbody().velocity.y, player.getStats().maxDownVelocity)));
+                CommonMethods.NormalizeValue(player.getRigidbody().linearVelocity.y, player.getStats().maxDownVelocity)));
             //Assert.True(movement is MidairMovement);
             yield return new WaitForSeconds(1f);
             movement = player.getMovement();
